@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OIDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="OIDBModelStoreContainer">
+    <EntitySet Name="Designation_Master" EntityType="OIDBModel.Store.Designation_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteUsers" EntityType="OIDBModel.Store.SiteUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="St_PermissionType" EntityType="OIDBModel.Store.St_PermissionType" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Designation_Master">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Desigation_Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryBy" Type="int" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SiteUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="User_Type_ID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address" Type="ntext" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="OrgnisationName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SessionID" Type="nvarchar" MaxLength="150" />
+    <Property Name="EntryBy" Type="int" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Countryid" Type="decimal" Precision="19" />
+  </EntityType>
+  <EntityType Name="St_PermissionType">
+    <Key>
+      <PropertyRef Name="PTypeID" />
+    </Key>
+    <Property Name="PTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PType" Type="nvarchar" MaxLength="150" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+</Schema>

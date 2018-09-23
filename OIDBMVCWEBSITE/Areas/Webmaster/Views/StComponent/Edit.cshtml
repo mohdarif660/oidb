@@ -1,0 +1,124 @@
+﻿@model OIDBMVCWEBSITE.Models.st_components
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>st_components</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.comp_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.comp_id)
+            @Html.ValidationMessageFor(model => model.comp_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mod_id, "st_module")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("mod_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.mod_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.comp_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.comp_name)
+            @Html.ValidationMessageFor(model => model.comp_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.status)
+            @Html.ValidationMessageFor(model => model.status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.add_del)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.add_del)
+            @Html.ValidationMessageFor(model => model.add_del)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.comp_file)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.comp_file)
+            @Html.ValidationMessageFor(model => model.comp_file)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.comp_type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.comp_type)
+            @Html.ValidationMessageFor(model => model.comp_type)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.entry_by)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.entry_by)
+            @Html.ValidationMessageFor(model => model.entry_by)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.entry_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.entry_date)
+            @Html.ValidationMessageFor(model => model.entry_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ip_addr)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ip_addr)
+            @Html.ValidationMessageFor(model => model.ip_addr)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.flag)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.flag)
+            @Html.ValidationMessageFor(model => model.flag)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pos)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pos)
+            @Html.ValidationMessageFor(model => model.pos)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

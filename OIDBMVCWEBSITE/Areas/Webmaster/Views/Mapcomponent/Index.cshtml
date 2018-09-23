@@ -1,0 +1,21 @@
+﻿@*@model OIDBMVCWEBSITE.Areas.Webmaster.Models.MapCheckBoxList*@
+@model OIDBMVCWEBSITE.Areas.Webmaster.Models.MapComponentViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Webmaster/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 ">
+        <div class="page-header">
+            @Html.DropDownListFor(m => m.PtypeId, ViewBag.Usertype as SelectList, "--Select--", new { @class = "form-control", id = "ddlPtypeId" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="partialDiv">
+            @Html.Partial("_MapPartialView")
+        </div>
+    </div>
+</div>

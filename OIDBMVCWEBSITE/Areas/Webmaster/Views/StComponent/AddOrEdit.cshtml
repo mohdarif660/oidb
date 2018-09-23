@@ -1,0 +1,55 @@
+﻿@model OIDBMVCWEBSITE.Models.st_components
+
+
+
+@using (Html.BeginForm("AddOrEdit", "StComponent", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.mod_id)
+
+                @Html.DropDownListFor(model => model.mod_id, ViewBag.mod_id as SelectList, "--Select--", new { @class = "form-control", @placeholder = "ID" })
+                @Html.ValidationMessageFor(model => model.mod_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.comp_name)
+                @Html.TextBoxFor(model => model.comp_name, new { @class = "form-control", @placeholder = "Component Name" })
+                @Html.ValidationMessageFor(model => model.comp_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.add_del)
+                @Html.RadioButtonFor(model => model.add_del, "Yes", new { id = "Yes" }) Yes
+                @Html.RadioButtonFor(model => model.add_del, "No", new { id = "No" }) No
+                @Html.ValidationMessageFor(model => model.add_del, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.comp_file)
+                @Html.TextBoxFor(model => model.comp_file, new { @class = "form-control", @placeholder = "File Name" })
+                @Html.ValidationMessageFor(model => model.comp_file, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-success" />
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

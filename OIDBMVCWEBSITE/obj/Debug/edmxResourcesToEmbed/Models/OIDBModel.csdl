@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OIDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OIDBConectionDB" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="DesignationMasters" EntityType="OIDBModel.DesignationMaster" />
+    <EntitySet Name="SiteUsers" EntityType="OIDBModel.SiteUser" />
+    <EntitySet Name="UserPermissionTypes" EntityType="OIDBModel.UserPermissionType" />
+  </EntityContainer>
+  <EntityType Name="DesignationMaster">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Desigation_Name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="EntryBy" Type="Int32" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="IpAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SiteUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="DesignationID" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="User_Type_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="OrgnisationName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="SessionID" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="EntryBy" Type="Int32" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="IpAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Countryid" Type="Decimal" Precision="19" Scale="0" />
+  </EntityType>
+  <EntityType Name="UserPermissionType">
+    <Key>
+      <PropertyRef Name="PTypeID" />
+    </Key>
+    <Property Name="PTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PType" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

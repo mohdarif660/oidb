@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Designation_Master">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Desigation_Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryBy" Type="int" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Failed_Login_Attempts">
+    <Key>
+      <PropertyRef Name="AttemptsID" />
+    </Key>
+    <Property Name="AttemptsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dated" Type="datetime" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="user_type_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginLogOffUserDetails">
+    <Key>
+      <PropertyRef Name="LId" />
+    </Key>
+    <Property Name="LId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="150" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="150" />
+    <Property Name="DateOfLogin" Type="datetime" />
+    <Property Name="DateOfLogOff" Type="datetime" />
+  </EntityType>
+  <EntityType Name="map_component_usertype">
+    <Key>
+      <PropertyRef Name="mpu" />
+    </Key>
+    <Property Name="mpu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ut_id" Type="int" />
+    <Property Name="comp_id" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="entryby" Type="int" />
+    <Property Name="entrydate" Type="datetime" />
+    <Property Name="ip_addr" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="permissions">
+    <Key>
+      <PropertyRef Name="perm_id" />
+    </Key>
+    <Property Name="perm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="comp_id" Type="int" />
+    <Property Name="mod_id" Type="int" />
+    <Property Name="add_perm" Type="int" />
+    <Property Name="mod_perm" Type="int" />
+    <Property Name="del_perm" Type="int" />
+    <Property Name="notappl" Type="int" />
+  </EntityType>
+  <EntityType Name="SiteUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="User_Type_ID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" />
+    <Property Name="Address" Type="ntext" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="OrgnisationName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SessionID" Type="nvarchar" MaxLength="150" />
+    <Property Name="EntryBy" Type="int" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Countryid" Type="decimal" Precision="19" Scale="0" />
+    <Property Name="FailureAttemptCount" Type="int" />
+  </EntityType>
+  <EntityType Name="st_components">
+    <Key>
+      <PropertyRef Name="comp_id" />
+    </Key>
+    <Property Name="comp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mod_id" Type="int" />
+    <Property Name="comp_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="add_del" Type="nvarchar" MaxLength="50" />
+    <Property Name="comp_file" Type="nvarchar" MaxLength="255" />
+    <Property Name="comp_type" Type="nvarchar" MaxLength="200" />
+    <Property Name="entry_by" Type="int" />
+    <Property Name="entry_date" Type="datetime" />
+    <Property Name="ip_addr" Type="nvarchar" MaxLength="250" />
+    <Property Name="flag" Type="int" />
+    <Property Name="pos" Type="int" />
+  </EntityType>
+  <EntityType Name="st_module">
+    <Key>
+      <PropertyRef Name="mod_id" />
+    </Key>
+    <Property Name="mod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="module_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="entry_by" Type="int" />
+    <Property Name="entry_date" Type="datetime" />
+    <Property Name="pos" Type="int" />
+  </EntityType>
+  <EntityType Name="St_PermissionType">
+    <Key>
+      <PropertyRef Name="PTypeID" />
+    </Key>
+    <Property Name="PTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PType" Type="nvarchar" MaxLength="150" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserTrail">
+    <Key>
+      <PropertyRef Name="TrailID" />
+    </Key>
+    <Property Name="TrailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="user_type_id" Type="int" Nullable="false" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LID" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="Dated" Type="datetime" Nullable="false" />
+    <Property Name="ActionTaken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IpAddr" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_map_component_usertype_st_components">
+    <End Role="st_components" Type="Self.st_components" Multiplicity="0..1" />
+    <End Role="map_component_usertype" Type="Self.map_component_usertype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="st_components">
+        <PropertyRef Name="comp_id" />
+      </Principal>
+      <Dependent Role="map_component_usertype">
+        <PropertyRef Name="comp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_map_component_usertype_st_permissionType">
+    <End Role="St_PermissionType" Type="Self.St_PermissionType" Multiplicity="0..1" />
+    <End Role="map_component_usertype" Type="Self.map_component_usertype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="St_PermissionType">
+        <PropertyRef Name="PTypeID" />
+      </Principal>
+      <Dependent Role="map_component_usertype">
+        <PropertyRef Name="ut_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_permissions_SiteUsers">
+    <End Role="SiteUsers" Type="Self.SiteUsers" Multiplicity="0..1" />
+    <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiteUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="permissions">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_permissions_st_components">
+    <End Role="st_components" Type="Self.st_components" Multiplicity="0..1" />
+    <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="st_components">
+        <PropertyRef Name="comp_id" />
+      </Principal>
+      <Dependent Role="permissions">
+        <PropertyRef Name="comp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_permissions_st_module">
+    <End Role="st_module" Type="Self.st_module" Multiplicity="0..1" />
+    <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="st_module">
+        <PropertyRef Name="mod_id" />
+      </Principal>
+      <Dependent Role="permissions">
+        <PropertyRef Name="mod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_st_components_st_module">
+    <End Role="st_module" Type="Self.st_module" Multiplicity="0..1" />
+    <End Role="st_components" Type="Self.st_components" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="st_module">
+        <PropertyRef Name="mod_id" />
+      </Principal>
+      <Dependent Role="st_components">
+        <PropertyRef Name="mod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OIDBModelStoreContainer">
+    <EntitySet Name="Designation_Master" EntityType="Self.Designation_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Failed_Login_Attempts" EntityType="Self.Failed_Login_Attempts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginLogOffUserDetails" EntityType="Self.LoginLogOffUserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="map_component_usertype" EntityType="Self.map_component_usertype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permissions" EntityType="Self.permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SiteUsers" EntityType="Self.SiteUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="st_components" EntityType="Self.st_components" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="st_module" EntityType="Self.st_module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="St_PermissionType" EntityType="Self.St_PermissionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTrail" EntityType="Self.UserTrail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_map_component_usertype_st_components" Association="Self.FK_map_component_usertype_st_components">
+      <End Role="st_components" EntitySet="st_components" />
+      <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+    </AssociationSet>
+    <AssociationSet Name="FK_map_component_usertype_st_permissionType" Association="Self.FK_map_component_usertype_st_permissionType">
+      <End Role="St_PermissionType" EntitySet="St_PermissionType" />
+      <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+    </AssociationSet>
+    <AssociationSet Name="FK_permissions_SiteUsers" Association="Self.FK_permissions_SiteUsers">
+      <End Role="SiteUsers" EntitySet="SiteUsers" />
+      <End Role="permissions" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_permissions_st_components" Association="Self.FK_permissions_st_components">
+      <End Role="st_components" EntitySet="st_components" />
+      <End Role="permissions" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_permissions_st_module" Association="Self.FK_permissions_st_module">
+      <End Role="st_module" EntitySet="st_module" />
+      <End Role="permissions" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_st_components_st_module" Association="Self.FK_st_components_st_module">
+      <End Role="st_module" EntitySet="st_module" />
+      <End Role="st_components" EntitySet="st_components" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

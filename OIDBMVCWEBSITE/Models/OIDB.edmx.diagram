@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cfe4f14ffdf44b42840263d4bb3c50ee" Name="Diagram1">
+        <EntityTypeShape EntityType="OIDBModel.Designation_Master" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OIDBModel.SiteUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OIDBModel.St_PermissionType" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OIDBModel.st_components" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="OIDBModel.st_module" Width="1.5" PointX="0.5" PointY="3.125" />
+        <AssociationConnector Association="OIDBModel.FK_st_components_st_module" />
+        <EntityTypeShape EntityType="OIDBModel.map_component_usertype" Width="1.5" PointX="5.25" PointY="5.5" />
+        <AssociationConnector Association="OIDBModel.FK_map_component_usertype_st_components" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="OIDBModel.FK_map_component_usertype_st_permissionType" />
+        <EntityTypeShape EntityType="OIDBModel.permission" Width="1.5" PointX="7" PointY="1.625" />
+        <AssociationConnector Association="OIDBModel.FK_permissions_SiteUsers" />
+        <AssociationConnector Association="OIDBModel.FK_permissions_st_components" />
+        <AssociationConnector Association="OIDBModel.FK_permissions_st_module" />
+        <EntityTypeShape EntityType="OIDBModel.Failed_Login_Attempts" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="OIDBModel.LoginLogOffUserDetail" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="OIDBModel.UserTrail" Width="1.5" PointX="9.375" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

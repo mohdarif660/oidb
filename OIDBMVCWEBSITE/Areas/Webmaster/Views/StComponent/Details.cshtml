@@ -1,0 +1,99 @@
+﻿@model OIDBMVCWEBSITE.Models.st_components
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>st_components</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.comp_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.comp_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.st_module.module_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.st_module.module_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.comp_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.comp_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.add_del)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.add_del)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.comp_file)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.comp_file)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.comp_type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.comp_type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.entry_by)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.entry_by)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.entry_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.entry_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ip_addr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ip_addr)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.flag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.flag)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pos)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

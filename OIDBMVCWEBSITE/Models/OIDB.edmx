@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Designation_Master">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desigation_Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryBy" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Failed_Login_Attempts">
+          <Key>
+            <PropertyRef Name="AttemptsID" />
+          </Key>
+          <Property Name="AttemptsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dated" Type="datetime" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginLogOffUserDetails">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="150" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="150" />
+          <Property Name="DateOfLogin" Type="datetime" />
+          <Property Name="DateOfLogOff" Type="datetime" />
+        </EntityType>
+        <EntityType Name="map_component_usertype">
+          <Key>
+            <PropertyRef Name="mpu" />
+          </Key>
+          <Property Name="mpu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ut_id" Type="int" />
+          <Property Name="comp_id" Type="int" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="entryby" Type="int" />
+          <Property Name="entrydate" Type="datetime" />
+          <Property Name="ip_addr" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="permissions">
+          <Key>
+            <PropertyRef Name="perm_id" />
+          </Key>
+          <Property Name="perm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="comp_id" Type="int" />
+          <Property Name="mod_id" Type="int" />
+          <Property Name="add_perm" Type="int" />
+          <Property Name="mod_perm" Type="int" />
+          <Property Name="del_perm" Type="int" />
+          <Property Name="notappl" Type="int" />
+        </EntityType>
+        <EntityType Name="SiteUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+          <Property Name="DesignationID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="User_Type_ID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address" Type="ntext" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="OrgnisationName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SessionID" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntryBy" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Countryid" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="FailureAttemptCount" Type="int" />
+        </EntityType>
+        <EntityType Name="st_components">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mod_id" Type="int" />
+          <Property Name="comp_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="add_del" Type="nvarchar" MaxLength="50" />
+          <Property Name="comp_file" Type="nvarchar" MaxLength="255" />
+          <Property Name="comp_type" Type="nvarchar" MaxLength="200" />
+          <Property Name="entry_by" Type="int" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="ip_addr" Type="nvarchar" MaxLength="250" />
+          <Property Name="flag" Type="int" />
+          <Property Name="pos" Type="int" />
+        </EntityType>
+        <EntityType Name="st_module">
+          <Key>
+            <PropertyRef Name="mod_id" />
+          </Key>
+          <Property Name="mod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="module_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="entry_by" Type="int" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="pos" Type="int" />
+        </EntityType>
+        <EntityType Name="St_PermissionType">
+          <Key>
+            <PropertyRef Name="PTypeID" />
+          </Key>
+          <Property Name="PTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PType" Type="nvarchar" MaxLength="150" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserTrail">
+          <Key>
+            <PropertyRef Name="TrailID" />
+          </Key>
+          <Property Name="TrailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="user_type_id" Type="int" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="Dated" Type="datetime" Nullable="false" />
+          <Property Name="ActionTaken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IpAddr" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_map_component_usertype_st_components">
+          <End Role="st_components" Type="Self.st_components" Multiplicity="0..1" />
+          <End Role="map_component_usertype" Type="Self.map_component_usertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_components">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="map_component_usertype">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_map_component_usertype_st_permissionType">
+          <End Role="St_PermissionType" Type="Self.St_PermissionType" Multiplicity="0..1" />
+          <End Role="map_component_usertype" Type="Self.map_component_usertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="St_PermissionType">
+              <PropertyRef Name="PTypeID" />
+            </Principal>
+            <Dependent Role="map_component_usertype">
+              <PropertyRef Name="ut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_permissions_SiteUsers">
+          <End Role="SiteUsers" Type="Self.SiteUsers" Multiplicity="0..1" />
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="permissions">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_permissions_st_components">
+          <End Role="st_components" Type="Self.st_components" Multiplicity="0..1" />
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_components">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="permissions">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_permissions_st_module">
+          <End Role="st_module" Type="Self.st_module" Multiplicity="0..1" />
+          <End Role="permissions" Type="Self.permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_module">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="permissions">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_st_components_st_module">
+          <End Role="st_module" Type="Self.st_module" Multiplicity="0..1" />
+          <End Role="st_components" Type="Self.st_components" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_module">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="st_components">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OIDBModelStoreContainer">
+          <EntitySet Name="Designation_Master" EntityType="Self.Designation_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Failed_Login_Attempts" EntityType="Self.Failed_Login_Attempts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginLogOffUserDetails" EntityType="Self.LoginLogOffUserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="map_component_usertype" EntityType="Self.map_component_usertype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="permissions" EntityType="Self.permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteUsers" EntityType="Self.SiteUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="st_components" EntityType="Self.st_components" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="st_module" EntityType="Self.st_module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="St_PermissionType" EntityType="Self.St_PermissionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTrail" EntityType="Self.UserTrail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_map_component_usertype_st_components" Association="Self.FK_map_component_usertype_st_components">
+            <End Role="st_components" EntitySet="st_components" />
+            <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_map_component_usertype_st_permissionType" Association="Self.FK_map_component_usertype_st_permissionType">
+            <End Role="St_PermissionType" EntitySet="St_PermissionType" />
+            <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_permissions_SiteUsers" Association="Self.FK_permissions_SiteUsers">
+            <End Role="SiteUsers" EntitySet="SiteUsers" />
+            <End Role="permissions" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_permissions_st_components" Association="Self.FK_permissions_st_components">
+            <End Role="st_components" EntitySet="st_components" />
+            <End Role="permissions" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_permissions_st_module" Association="Self.FK_permissions_st_module">
+            <End Role="st_module" EntitySet="st_module" />
+            <End Role="permissions" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_st_components_st_module" Association="Self.FK_st_components_st_module">
+            <End Role="st_module" EntitySet="st_module" />
+            <End Role="st_components" EntitySet="st_components" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OIDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OIDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Designation_Master" EntityType="OIDBModel.Designation_Master" />
+          <EntitySet Name="SiteUsers" EntityType="OIDBModel.SiteUser" />
+          <EntitySet Name="St_PermissionType" EntityType="OIDBModel.St_PermissionType" />
+          <EntitySet Name="st_components" EntityType="OIDBModel.st_components" />
+          <EntitySet Name="st_module" EntityType="OIDBModel.st_module" />
+          <AssociationSet Name="FK_st_components_st_module" Association="OIDBModel.FK_st_components_st_module">
+            <End Role="st_module" EntitySet="st_module" />
+            <End Role="st_components" EntitySet="st_components" />
+          </AssociationSet>
+          <EntitySet Name="map_component_usertype" EntityType="OIDBModel.map_component_usertype" />
+          <AssociationSet Name="FK_map_component_usertype_st_components" Association="OIDBModel.FK_map_component_usertype_st_components">
+            <End Role="st_components" EntitySet="st_components" />
+            <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+          </AssociationSet>
+          <AssociationSet Name="FK_map_component_usertype_st_permissionType" Association="OIDBModel.FK_map_component_usertype_st_permissionType">
+            <End Role="St_PermissionType" EntitySet="St_PermissionType" />
+            <End Role="map_component_usertype" EntitySet="map_component_usertype" />
+          </AssociationSet>
+          <EntitySet Name="permissions" EntityType="OIDBModel.permission" />
+          <AssociationSet Name="FK_permissions_SiteUsers" Association="OIDBModel.FK_permissions_SiteUsers">
+            <End Role="SiteUser" EntitySet="SiteUsers" />
+            <End Role="permission" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_permissions_st_components" Association="OIDBModel.FK_permissions_st_components">
+            <End Role="st_components" EntitySet="st_components" />
+            <End Role="permission" EntitySet="permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_permissions_st_module" Association="OIDBModel.FK_permissions_st_module">
+            <End Role="st_module" EntitySet="st_module" />
+            <End Role="permission" EntitySet="permissions" />
+          </AssociationSet>
+          <EntitySet Name="Failed_Login_Attempts" EntityType="OIDBModel.Failed_Login_Attempts" />
+          <EntitySet Name="LoginLogOffUserDetails" EntityType="OIDBModel.LoginLogOffUserDetail" />
+          <EntitySet Name="UserTrails" EntityType="OIDBModel.UserTrail" />
+          </EntityContainer>
+        <EntityType Name="Designation_Master">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Desigation_Name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EntryBy" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SiteUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="DesignationID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="User_Type_ID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="OrgnisationName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SessionID" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="EntryBy" Type="Int32" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Countryid" Type="Decimal" Precision="19" Scale="0" />
+          <NavigationProperty Name="permissions" Relationship="OIDBModel.FK_permissions_SiteUsers" FromRole="SiteUser" ToRole="permission" />
+          <Property Name="FailureAttemptCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="St_PermissionType">
+          <Key>
+            <PropertyRef Name="PTypeID" />
+          </Key>
+          <Property Name="PTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PType" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="map_component_usertype" Relationship="OIDBModel.FK_map_component_usertype_st_permissionType" FromRole="St_PermissionType" ToRole="map_component_usertype" />
+        </EntityType>
+        <EntityType Name="st_components">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mod_id" Type="Int32" />
+          <Property Name="comp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_del" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="comp_file" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="comp_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="entry_by" Type="Int32" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="ip_addr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="flag" Type="Int32" />
+          <Property Name="pos" Type="Int32" />
+          <NavigationProperty Name="st_module" Relationship="OIDBModel.FK_st_components_st_module" FromRole="st_components" ToRole="st_module" />
+          <NavigationProperty Name="map_component_usertype" Relationship="OIDBModel.FK_map_component_usertype_st_components" FromRole="st_components" ToRole="map_component_usertype" />
+          <NavigationProperty Name="permissions" Relationship="OIDBModel.FK_permissions_st_components" FromRole="st_components" ToRole="permission" />
+        </EntityType>
+        <EntityType Name="st_module">
+          <Key>
+            <PropertyRef Name="mod_id" />
+          </Key>
+          <Property Name="mod_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="module_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="entry_by" Type="Int32" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="pos" Type="Int32" />
+          <NavigationProperty Name="st_components" Relationship="OIDBModel.FK_st_components_st_module" FromRole="st_module" ToRole="st_components" />
+          <NavigationProperty Name="permissions" Relationship="OIDBModel.FK_permissions_st_module" FromRole="st_module" ToRole="permission" />
+          </EntityType>
+        <Association Name="FK_st_components_st_module">
+          <End Type="OIDBModel.st_module" Role="st_module" Multiplicity="0..1" />
+          <End Type="OIDBModel.st_components" Role="st_components" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_module">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="st_components">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="map_component_usertype">
+          <Key>
+            <PropertyRef Name="mpu" />
+          </Key>
+          <Property Name="mpu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ut_id" Type="Int32" />
+          <Property Name="comp_id" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="entryby" Type="Int32" />
+          <Property Name="entrydate" Type="DateTime" Precision="3" />
+          <Property Name="ip_addr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="st_components" Relationship="OIDBModel.FK_map_component_usertype_st_components" FromRole="map_component_usertype" ToRole="st_components" />
+          <NavigationProperty Name="St_PermissionType" Relationship="OIDBModel.FK_map_component_usertype_st_permissionType" FromRole="map_component_usertype" ToRole="St_PermissionType" />
+        </EntityType>
+        <Association Name="FK_map_component_usertype_st_components">
+          <End Type="OIDBModel.st_components" Role="st_components" Multiplicity="0..1" />
+          <End Type="OIDBModel.map_component_usertype" Role="map_component_usertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_components">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="map_component_usertype">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_map_component_usertype_st_permissionType">
+          <End Type="OIDBModel.St_PermissionType" Role="St_PermissionType" Multiplicity="0..1" />
+          <End Type="OIDBModel.map_component_usertype" Role="map_component_usertype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="St_PermissionType">
+              <PropertyRef Name="PTypeID" />
+            </Principal>
+            <Dependent Role="map_component_usertype">
+              <PropertyRef Name="ut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="permission">
+          <Key>
+            <PropertyRef Name="perm_id" />
+          </Key>
+          <Property Name="perm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="comp_id" Type="Int32" />
+          <Property Name="mod_id" Type="Int32" />
+          <Property Name="add_perm" Type="Int32" />
+          <Property Name="mod_perm" Type="Int32" />
+          <Property Name="del_perm" Type="Int32" />
+          <Property Name="notappl" Type="Int32" />
+          <NavigationProperty Name="SiteUser" Relationship="OIDBModel.FK_permissions_SiteUsers" FromRole="permission" ToRole="SiteUser" />
+          <NavigationProperty Name="st_components" Relationship="OIDBModel.FK_permissions_st_components" FromRole="permission" ToRole="st_components" />
+          <NavigationProperty Name="st_module" Relationship="OIDBModel.FK_permissions_st_module" FromRole="permission" ToRole="st_module" />
+        </EntityType>
+        <Association Name="FK_permissions_SiteUsers">
+          <End Type="OIDBModel.SiteUser" Role="SiteUser" Multiplicity="0..1" />
+          <End Type="OIDBModel.permission" Role="permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="permission">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_permissions_st_components">
+          <End Type="OIDBModel.st_components" Role="st_components" Multiplicity="0..1" />
+          <End Type="OIDBModel.permission" Role="permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_components">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="permission">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_permissions_st_module">
+          <End Type="OIDBModel.st_module" Role="st_module" Multiplicity="0..1" />
+          <End Type="OIDBModel.permission" Role="permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="st_module">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="permission">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Failed_Login_Attempts">
+          <Key>
+            <PropertyRef Name="AttemptsID" />
+          </Key>
+          <Property Name="AttemptsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_type_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginLogOffUserDetail">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfLogin" Type="DateTime" Precision="3" />
+          <Property Name="DateOfLogOff" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserTrail">
+          <Key>
+            <PropertyRef Name="TrailID" />
+          </Key>
+          <Property Name="TrailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="user_type_id" Type="Int32" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="Dated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActionTaken" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OIDBModelStoreContainer" CdmEntityContainer="OIDBEntities">
+          <EntitySetMapping Name="Designation_Master">
+            <EntityTypeMapping TypeName="OIDBModel.Designation_Master">
+              <MappingFragment StoreEntitySet="Designation_Master">
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="Desigation_Name" ColumnName="Desigation_Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteUsers">
+            <EntityTypeMapping TypeName="OIDBModel.SiteUser">
+              <MappingFragment StoreEntitySet="SiteUsers">
+                <ScalarProperty Name="FailureAttemptCount" ColumnName="FailureAttemptCount" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="User_Type_ID" ColumnName="User_Type_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="OrgnisationName" ColumnName="OrgnisationName" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="St_PermissionType">
+            <EntityTypeMapping TypeName="OIDBModel.St_PermissionType">
+              <MappingFragment StoreEntitySet="St_PermissionType">
+                <ScalarProperty Name="PTypeID" ColumnName="PTypeID" />
+                <ScalarProperty Name="PType" ColumnName="PType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="st_components">
+            <EntityTypeMapping TypeName="OIDBModel.st_components">
+              <MappingFragment StoreEntitySet="st_components">
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="ip_addr" ColumnName="ip_addr" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="entry_by" ColumnName="entry_by" />
+                <ScalarProperty Name="comp_type" ColumnName="comp_type" />
+                <ScalarProperty Name="comp_file" ColumnName="comp_file" />
+                <ScalarProperty Name="add_del" ColumnName="add_del" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="comp_name" ColumnName="comp_name" />
+                <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="st_module">
+            <EntityTypeMapping TypeName="OIDBModel.st_module">
+              <MappingFragment StoreEntitySet="st_module">
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="entry_by" ColumnName="entry_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="module_name" ColumnName="module_name" />
+                <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="map_component_usertype">
+            <EntityTypeMapping TypeName="OIDBModel.map_component_usertype">
+              <MappingFragment StoreEntitySet="map_component_usertype">
+                <ScalarProperty Name="ip_addr" ColumnName="ip_addr" />
+                <ScalarProperty Name="entrydate" ColumnName="entrydate" />
+                <ScalarProperty Name="entryby" ColumnName="entryby" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="ut_id" ColumnName="ut_id" />
+                <ScalarProperty Name="mpu" ColumnName="mpu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissions">
+            <EntityTypeMapping TypeName="OIDBModel.permission">
+              <MappingFragment StoreEntitySet="permissions">
+                <ScalarProperty Name="notappl" ColumnName="notappl" />
+                <ScalarProperty Name="del_perm" ColumnName="del_perm" />
+                <ScalarProperty Name="mod_perm" ColumnName="mod_perm" />
+                <ScalarProperty Name="add_perm" ColumnName="add_perm" />
+                <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Failed_Login_Attempts">
+            <EntityTypeMapping TypeName="OIDBModel.Failed_Login_Attempts">
+              <MappingFragment StoreEntitySet="Failed_Login_Attempts">
+                <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+                <ScalarProperty Name="AttemptsID" ColumnName="AttemptsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginLogOffUserDetails">
+            <EntityTypeMapping TypeName="OIDBModel.LoginLogOffUserDetail">
+              <MappingFragment StoreEntitySet="LoginLogOffUserDetails">
+                <ScalarProperty Name="DateOfLogOff" ColumnName="DateOfLogOff" />
+                <ScalarProperty Name="DateOfLogin" ColumnName="DateOfLogin" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="LId" ColumnName="LId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTrails">
+            <EntityTypeMapping TypeName="OIDBModel.UserTrail">
+              <MappingFragment StoreEntitySet="UserTrail">
+                <ScalarProperty Name="IpAddr" ColumnName="IpAddr" />
+                <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="LID" ColumnName="LID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TrailID" ColumnName="TrailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

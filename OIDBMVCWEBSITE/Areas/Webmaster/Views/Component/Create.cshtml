@@ -1,0 +1,67 @@
+﻿@model OIDBMVCWEBSITE.Models.st_components
+@{
+    Layout = null;
+}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header modal-header-danger">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add / Edit Component</h4>
+        </div>
+        @using (Html.BeginForm("Create1", "Component", FormMethod.Post, new { onsubmit = "return SubmitForm1(this)" }))
+        {
+            if (Model != null && Model.comp_id > 0)
+            {
+                @Html.HiddenFor(model => model.comp_id)
+            }
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.mod_id)
+                            @Html.DropDownListFor(model => model.mod_id, ViewBag.mod_id1 as SelectList, "--Select--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.mod_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.comp_name)
+                            @Html.TextBoxFor(model => model.comp_name, new { @class = "form-control", @placeholder = "Component Name" })
+                            @Html.ValidationMessageFor(model => model.comp_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.add_del)
+                            @Html.RadioButtonFor(model => model.add_del, "Yes", new { id = "Yes" }) Yes
+                            @Html.RadioButtonFor(model => model.add_del, "No", new { id = "No" }) No
+                            @Html.ValidationMessageFor(model => model.add_del, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.comp_file)
+                            @Html.TextBoxFor(model => model.comp_file, new { @class = "form-control", @placeholder = "File Name" })
+                            @Html.ValidationMessageFor(model => model.comp_file, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @if (Model != null && Model.comp_id > 0)
+                {
+                <input type="submit" value="Update" class="btn btn-success" id="btnSubmit" />
+                }
+                else
+                {<input type="submit" value="Create" class="btn btn-success" id="btnSubmit" />}
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        }
+    </div>
+</div>

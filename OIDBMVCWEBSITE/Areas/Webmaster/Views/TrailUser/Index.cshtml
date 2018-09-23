@@ -1,0 +1,228 @@
+﻿@model  OIDBMVCWEBSITE.Areas.Webmaster.Models.MasterViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                @Html.Label("Select User")
+                @Html.DropDownList("ddlUserId", ViewBag.UserName as SelectList, "--Select--", new { @class = "form-control" })
+                @Html.ValidationMessage("ddlUserId", @ViewBag.errorUserId as string, new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                @Html.Label("Select Action")
+                @Html.DropDownList("ddlActionId", ViewBag.ActionType as SelectList, "--Select--", new { @class = "form-control" })
+                @Html.ValidationMessage("ddlActionId", @ViewBag.errorActionId as string, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+
+                @Html.Label("From Date")
+                @Html.TextBox("txtFromDate", "", new { @class = "form-control DatePicker", @placeholder = "DD/MM/YYYY" })
+                @Html.ValidationMessage("txtFromDate", @ViewBag.errorFromDate as string, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+                @Html.Label("To Date")
+                @Html.TextBox("txtTodate", "", new { @class = "form-control DatePicker", @placeholder = "DD/MM/YYYY" })
+                @Html.ValidationMessage("txtTodate", @ViewBag.errorToDate as string, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+                <br />
+                <input type="submit" class="btn btn-success" value="Submit" />
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title "><i class="fa fa-user"></i> User Trail Details</h3>
+            </div>
+
+            <div class="panel-body">
+
+                @if (Model.listloginLogOffUserDetail != null && Model.listloginLogOffUserDetail.Count > 0)
+                {
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+
+                                    <tr>
+                                        <th>
+                                            S.No.
+                                        </th>
+                                        <th>
+                                            Login Name
+                                        </th>
+                                        <th>
+                                            Ip Address
+                                        </th>
+                                        <th>
+                                            Login Date Time
+                                        </th>
+                                        <th>
+                                            Log Out Date Time
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int sr = 1;}
+                                    @foreach (var item in Model.listloginLogOffUserDetail)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @(sr++).
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Login)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IpAddress)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateOfLogin)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateOfLogOff)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                                        }
+                @if (Model.listfailed_Login_Attempts != null && Model.listfailed_Login_Attempts.Count > 0)
+                { <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+
+                                <tr>
+                                    <th>
+                                        S.No.
+                                    </th>
+                                    <th>
+                                        Login Name
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Ip Address
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int m = 1;}
+                                @foreach (var item in Model.listfailed_Login_Attempts)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(m++).
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Login)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Dated)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IpAddress)
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>       }
+
+                @if (Model.listUserTrail != null && Model.listUserTrail.Count > 0)
+                {
+                     <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+
+                                <tr>
+                                    <th>
+                                        S.No.
+                                    </th>
+                                    <th>
+                                        Table Name
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Action Taken
+                                    </th>
+                                    <th>
+                                        Ip Address
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int z = 1;}
+                                @foreach (var item in Model.listUserTrail)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(z++).
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TableName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Dated)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ActionTaken)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IpAddr)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                                    }
+
+                @*@if (Model.listloginLogOffUserDetail == null && Model.listfailed_Login_Attempts == null && Model.listUserTrail == null)
+                {
+                    if (Model.listloginLogOffUserDetail.Count > 0 && Model.listfailed_Login_Attempts.Count > 0 && Model.listUserTrail.Count > 0)
+                    {
+
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                No Record Found.
+                            </div>
+                        </div>
+                    }
+                }*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

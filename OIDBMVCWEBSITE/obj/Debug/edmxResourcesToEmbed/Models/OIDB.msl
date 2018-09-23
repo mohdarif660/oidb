@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OIDBModelStoreContainer" CdmEntityContainer="OIDBEntities">
+    <EntitySetMapping Name="Designation_Master">
+      <EntityTypeMapping TypeName="OIDBModel.Designation_Master">
+        <MappingFragment StoreEntitySet="Designation_Master">
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="Desigation_Name" ColumnName="Desigation_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteUsers">
+      <EntityTypeMapping TypeName="OIDBModel.SiteUser">
+        <MappingFragment StoreEntitySet="SiteUsers">
+          <ScalarProperty Name="FailureAttemptCount" ColumnName="FailureAttemptCount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="User_Type_ID" ColumnName="User_Type_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="OrgnisationName" ColumnName="OrgnisationName" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Countryid" ColumnName="Countryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="St_PermissionType">
+      <EntityTypeMapping TypeName="OIDBModel.St_PermissionType">
+        <MappingFragment StoreEntitySet="St_PermissionType">
+          <ScalarProperty Name="PTypeID" ColumnName="PTypeID" />
+          <ScalarProperty Name="PType" ColumnName="PType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="st_components">
+      <EntityTypeMapping TypeName="OIDBModel.st_components">
+        <MappingFragment StoreEntitySet="st_components">
+          <ScalarProperty Name="pos" ColumnName="pos" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="ip_addr" ColumnName="ip_addr" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_by" ColumnName="entry_by" />
+          <ScalarProperty Name="comp_type" ColumnName="comp_type" />
+          <ScalarProperty Name="comp_file" ColumnName="comp_file" />
+          <ScalarProperty Name="add_del" ColumnName="add_del" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="comp_name" ColumnName="comp_name" />
+          <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+          <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="st_module">
+      <EntityTypeMapping TypeName="OIDBModel.st_module">
+        <MappingFragment StoreEntitySet="st_module">
+          <ScalarProperty Name="pos" ColumnName="pos" />
+          <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+          <ScalarProperty Name="entry_by" ColumnName="entry_by" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="module_name" ColumnName="module_name" />
+          <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="map_component_usertype">
+      <EntityTypeMapping TypeName="OIDBModel.map_component_usertype">
+        <MappingFragment StoreEntitySet="map_component_usertype">
+          <ScalarProperty Name="ip_addr" ColumnName="ip_addr" />
+          <ScalarProperty Name="entrydate" ColumnName="entrydate" />
+          <ScalarProperty Name="entryby" ColumnName="entryby" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+          <ScalarProperty Name="ut_id" ColumnName="ut_id" />
+          <ScalarProperty Name="mpu" ColumnName="mpu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissions">
+      <EntityTypeMapping TypeName="OIDBModel.permission">
+        <MappingFragment StoreEntitySet="permissions">
+          <ScalarProperty Name="notappl" ColumnName="notappl" />
+          <ScalarProperty Name="del_perm" ColumnName="del_perm" />
+          <ScalarProperty Name="mod_perm" ColumnName="mod_perm" />
+          <ScalarProperty Name="add_perm" ColumnName="add_perm" />
+          <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+          <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Failed_Login_Attempts">
+      <EntityTypeMapping TypeName="OIDBModel.Failed_Login_Attempts">
+        <MappingFragment StoreEntitySet="Failed_Login_Attempts">
+          <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Dated" ColumnName="Dated" />
+          <ScalarProperty Name="AttemptsID" ColumnName="AttemptsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLogOffUserDetails">
+      <EntityTypeMapping TypeName="OIDBModel.LoginLogOffUserDetail">
+        <MappingFragment StoreEntitySet="LoginLogOffUserDetails">
+          <ScalarProperty Name="DateOfLogOff" ColumnName="DateOfLogOff" />
+          <ScalarProperty Name="DateOfLogin" ColumnName="DateOfLogin" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="LId" ColumnName="LId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTrails">
+      <EntityTypeMapping TypeName="OIDBModel.UserTrail">
+        <MappingFragment StoreEntitySet="UserTrail">
+          <ScalarProperty Name="IpAddr" ColumnName="IpAddr" />
+          <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+          <ScalarProperty Name="Dated" ColumnName="Dated" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TrailID" ColumnName="TrailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
